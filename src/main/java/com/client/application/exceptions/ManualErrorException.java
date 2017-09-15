@@ -1,8 +1,6 @@
 package com.client.application.exceptions;
 
-import org.mule.module.apikit.exception.BadRequestException;
-
-public class ManualErrorException extends BadRequestException {
+public class ManualErrorException extends Exception {
 
 	public ManualErrorException(String message) {
 		super(message);
