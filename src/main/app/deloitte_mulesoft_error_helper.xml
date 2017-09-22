@@ -10,6 +10,7 @@ http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/a
         <apikit:mapping statusCode="400">
             <apikit:exception value="org.mule.module.apikit.exception.BadRequestException"/>
             <apikit:exception value="com.client.application.exceptions.ManualErrorException"/>
+            <apikit:exception value="com.client.application.exceptions.SecondException"/>
             <set-variable variableName="errorMessage" value="Bad Request" doc:name="Set Error Message"/>
             <flow-ref name="SetErrorValues" doc:name="SetErrorValues"/>
         </apikit:mapping>
