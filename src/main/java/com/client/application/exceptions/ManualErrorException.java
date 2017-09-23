@@ -11,4 +11,13 @@ public class ManualErrorException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Added to try to force a build
+	 * 
+	 * @return A string with a single space
+	 */
+	private String doSomething() {
+		return " ";
+	}
+
 }
