@@ -16,15 +16,18 @@
 		<mule.version>3.8.5</mule.version>
     	<mule.tools.version>1.2</mule.tools.version>
     	<apiviz.version>1.3.4</apiviz.version>
-    	<!-- github server corresponds to entry in ~/.m2/settings.xml -->
-    	<github.global.server>github</github.global.server>
+    	<!-- remote repo details -->
+    	<localrepo.url>http://BuildBox:8082/repository/internal</localrepo.url>
+    	<localrepo.id>local-internal</localrepo.id>
+    	<localrepo.name>Local Repository</localrepo.name>
 	</properties>
 
+	<!-- TODO: parameterize URL (and ID? and others?) the local repo deets -->
 	<distributionManagement>
 	    <repository>
-	        <id>internal.repo</id>
-	        <name>Temporary Staging Repository</name>
-	        <url>file://${project.build.directory}/mvn-repo</url>
+	        <id>${localrepo.id}</id>
+	        <name>${localrepo.name}</name>
+	        <url>${localrepo.url}</url>
 	    </repository>
 	</distributionManagement>
 
@@ -85,28 +88,39 @@
 					</additionalparam>
 				</configuration>
 			</plugin>
-			<plugin>
+	<!-- following [commented out] plugins would be used for deploying the JAR 
+		to GitHub. Now deploying to remote repo, instead, but leaving in commented 
+		code in case it's needed again in the future. -->
+			<!-- plugin>
 		        <artifactId>maven-deploy-plugin</artifactId>
 		        <version>2.8.1</version>
 		        <configuration>
 		            <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
 		        </configuration>
-		    </plugin>
-		    <plugin>
+		    </plugin -->
+		    <!-- 
+		    message: git commit message
+		    noJekyll/true: disable webpage processing
+		    outputDirectory: matches distribution management repository url above
+		    branch: remote branch name
+		    repositoryName: github repo name
+		    repositoryOwner: github username 
+		    execution: run site-maven-plugin's 'site' target as part of the build's normal 'deploy phase
+		    -->
+		    <!-- plugin>
 	            <groupId>com.github.github</groupId>
 	            <artifactId>site-maven-plugin</artifactId>
 	            <version>0.11</version>
 	            <configuration>
-	                <message>Maven artifacts for ${project.version}</message>  <!-- git commit message -->
-	                <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
-	                <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> <!-- matches distribution management repository url above -->
-	                <branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name -->
+	                <message>Maven artifacts for ${project.version}</message>  
+	                <noJekyll>true</noJekyll>                                  
+	                <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> 
+	                <branch>refs/heads/mvn-repo</branch>                       
 	                <includes><include>**/*</include></includes>
-	                <repositoryName>deloitte_mulesoft_error_helper</repositoryName>      <!-- github repo name -->
-	                <repositoryOwner>davhunter</repositoryOwner>    <!-- github username  -->
+	                <repositoryName>deloitte_mulesoft_error_helper</repositoryName>      
+	                <repositoryOwner>davhunter</repositoryOwner>    
 	            </configuration>
 	            <executions>
-	              <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
 	              <execution>
 	                <goals>
 	                  <goal>site</goal>
@@ -114,7 +128,7 @@
 	                <phase>deploy</phase>
 	              </execution>
 	            </executions>
-	        </plugin>
+	        </plugin -->
 		</plugins>
 	</build>
 	
@@ -206,11 +220,17 @@
     </dependencies>
 
 	<repositories>
-          <repository>
+          <!-- repository>
             <id>Central</id>
             <name>Central</name>
             <url>http://repo1.maven.org/maven2/</url>
             <layout>default</layout>
+        </repository -->
+        <repository>
+        	<id>${localrepo.id}</id>
+        	<name>${localrepo.name}</name>
+        	<url>${localrepo.id}</url>
+        	<layout>default</layout>
         </repository>
         <repository>
             <id>mulesoft-releases</id>
