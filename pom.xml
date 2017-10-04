@@ -22,7 +22,6 @@
     	<localrepo.name>Local Repository</localrepo.name>
 	</properties>
 
-	<!-- TODO: parameterize URL (and ID? and others?) the local repo deets -->
 	<distributionManagement>
 	    <repository>
 	        <id>${localrepo.id}</id>

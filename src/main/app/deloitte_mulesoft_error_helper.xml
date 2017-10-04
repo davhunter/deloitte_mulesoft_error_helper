@@ -44,10 +44,6 @@ http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/a
         <set-property propertyName="content-type" value="application/json" doc:name="Set Content Type"/>
         <set-variable variableName="errorDescription" value="#[com.deloitte.mulesoft.helperclasses.CustomExceptionHelper.escapeStringForJSON(exception.getMessage())]" doc:name="Set Error Description"/>
         <set-variable variableName="errorCode" value="#[com.deloitte.mulesoft.helperclasses.CustomExceptionHelper.getErrorCode(exception.cause.class)]" doc:name="Set Error Code"/>
-        <set-payload value="{
-	&quot;errorCode&quot;: &quot;#[flowVars.errorCode]&quot;,
-	&quot;message&quot;: &quot;#[flowVars.errorMessage]&quot;,
-	&quot;description&quot;: &quot;#[flowVars.errorDescription]&quot; 
-}" mimeType="application/json" doc:name="Set Payload"/>
+        <set-payload value="{  &quot;errorCode&quot;: #[flowVars.errorCode],  &quot;message&quot;: &quot;#[flowVars.errorMessage]&quot;,  &quot;description&quot;: &quot;#[flowVars.errorDescription]&quot;  }" mimeType="application/json" doc:name="Set Payload"/>
     </sub-flow>
 </mule>
