@@ -1,11 +1,16 @@
 #%RAML 1.0 DataType
 
+# DO NOT MODIFY THIS FILE; IT SHOULD BE COPIED INTO THE PROJECT BY MAVEN
+
 description: Common data type returned for errors
 type: object
 properties:
   errorCode:
     type: integer
+    description: Unique error code defined for the error
   message:
     type: string
+    description: A specific message for this error, typically returned from the Java error message
   description:
     type: string
+    description: A generic message, describing this HTTP status code
