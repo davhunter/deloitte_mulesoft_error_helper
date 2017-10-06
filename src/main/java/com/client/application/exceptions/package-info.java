@@ -1,5 +1,5 @@
 /**
- * This package contains Exceptions to be thrown by the Error Handling Tester
- * application
+ * This package contains some stock exceptions, which would mostly be used for
+ * unit testing the application
  */
 package com.client.application.exceptions;
