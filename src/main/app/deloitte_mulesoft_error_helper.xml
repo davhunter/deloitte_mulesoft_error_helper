@@ -16,6 +16,7 @@ http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/a
         </apikit:mapping>
         <apikit:mapping statusCode="404">
             <apikit:exception value="org.mule.module.apikit.exception.NotFoundException"/>
+            <apikit:exception value="com.deloitte.customerapi.exceptions.CustomerNotFoundException"/>
             <set-variable variableName="errorMessage" value="Resource Not Found" doc:name="Set Error Message"/>
             <flow-ref name="SetErrorValues" doc:name="SetErrorValues"/>
         </apikit:mapping>
