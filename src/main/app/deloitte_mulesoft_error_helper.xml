@@ -36,6 +36,7 @@ http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/a
         </apikit:mapping>
         <apikit:mapping statusCode="500">
             <apikit:exception value="org.mule.module.db.internal.domain.connection.ConnectionCreationException"/>
+            <apikit:exception value="com.deloitte.capi.exceptions.InvalidSourceException"/>
             <set-variable variableName="errorMessage" value="Internal Exception" doc:name="Set Error Message"/>
             <flow-ref name="SetErrorValues" doc:name="SetErrorValues"/>
         </apikit:mapping>
