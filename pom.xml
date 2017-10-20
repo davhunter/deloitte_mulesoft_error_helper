@@ -191,12 +191,6 @@
 			<version>${mule.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- Other -->
-		<dependency>
-			<groupId>com.grahamedgecombe.apiviz</groupId>
-			<artifactId>apiviz</artifactId>
-			<version>${apiviz.version}</version>
-		</dependency>
 		<!-- for testing -->
 		<dependency>
 			<groupId>org.mule.tests</groupId>

@@ -1,3 +1,4 @@
 com.client.application.exceptions
 com.deloitte.capi.exceptions
+com.deloitte.customerapi.exceptions
 com.deloitte.mulesoft.helperclasses
